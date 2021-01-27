@@ -1,0 +1,447 @@
+<div class="row">
+    <div class="col-lg-12 grid-margin">
+      <div class="card">
+        <div class="card-body">
+          <div class="row mb-3">
+            <div class="col-md-3">
+              <h6>Purchase Order</h6>
+            </div>
+            <div class="col-md-3"></div>
+
+            <div class="col-md-4">
+              <div class="form-group has-search">
+                <span class="fa fa-search form-control-feedback"></span>
+                <input type="text" [(ngModel)]="searchStatus" class="form-control btn-radius"
+                  placeholder="Search by Client / Mail / Attn To.." #searchInput />
+              </div>
+            </div>
+            <div class="col-md-2">
+              <button class="btn btn-md" (click)="purchaseform()" style="background-color:#2f3e65 ;color: white;font-size: 10px;float: right;">+ New PurchaseOrder</button>
+            </div>
+          </div>
+
+          <div class="row mb-3">
+            <div class="col-md-8" *ngIf="table1"></div>
+
+            <div class="col-md-8" *ngIf="table2">
+              <small class="mr-2 icons" ><i class="menu-icon mdi mdi-folder-plus mr-2" style="color: green;"></i>= Genarate Delivery Challan</small>
+              <small class="mr-2 icons"><i class="menu-icon mdi mdi-delete mr-2" style="color: red;"></i>= Delete Quotation</small>
+              <small class="icons"><i class="menu-icon mdi mdi-eye mr-2" ></i>= View Pdf/download</small>
+            </div>
+            <!-- <div class="col-md-4"></div> -->
+              
+            <div class="col-md-4">
+                <div class="tabs mt-1" style="float: right;">
+                    <ul class="nav " role="tablist">
+                        <li >
+                            <div ngbDropdown class="d-inline-block" style="float: right;font-size: 15px;">
+                                <a  type="button" id="dropdownMenuIconButton1" ngbDropdownToggle>
+                                  <i class="mdi mdi-settings" ></i>
+                                </a>
+                                <div ngbDropdownMenu aria-labelledby="dropdownMenuIconButton1" style="border: noone;box-shadow: 0 0 5px black;">
+                                  <a class="dropdown-item"  (click)="toarchive();">Archive</a>  <!-- openMediumModalPopup(singleOD); -->
+                                  <a class="dropdown-item" >Duplicate</a>
+                                  <a class="dropdown-item" >Delete</a>
+                                  
+                              </div>
+                             </div>
+                        </li>
+                    <li class="nav-item ml-5"><a class="btn btn-sm  nav-link active" (click)="activefun()" data-toggle="tab" role="tab" >Active</a>
+                      </li>
+                    <li class="nav-item"> <a class="btn btn-sm  nav-link" (click)="archived()" data-toggle="tab" role="tab" >Archieved</a></li>
+                   </ul>
+                  </div>
+            </div>
+          </div>
+          
+         
+          <div *ngIf="table1">
+          <div class="table-responsive">
+            <table class="table table-bordered  " [mfData]="this.expdata" #mf="mfDataTable" [mfRowsOnPage]="5">
+              <thead>
+                <tr>
+                  <th>
+                      <!-- <i class="menu-icon mdi mdi-checkbox-marked-outline"></i> -->
+                    <mfDefaultSorter by="sequencyId">Action<i class="fa fa-unsorted ml-1"></i></mfDefaultSorter>
+                  </th>
+                  <th>
+                    <mfDefaultSorter by="invoice">P.O Number<i class="fa fa-unsorted ml-1"></i></mfDefaultSorter>
+                  </th>
+                  <th>
+                    <mfDefaultSorter by="title">Client<i class="fa fa-unsorted ml-1"></i></mfDefaultSorter>
+                  </th> 
+                  <th>
+                    <mfDefaultSorter by="month">Date<i class="fa fa-unsorted ml-1"></i></mfDefaultSorter>
+                  </th>
+                  <th>
+                    <mfDefaultSorter by="tax">GSTIN <i class="fa fa-unsorted ml-1"></i></mfDefaultSorter>
+                  </th>  
+                  <th>
+                    <mfDefaultSorter by="total">Total<i class="fa fa-unsorted ml-1"></i> </mfDefaultSorter>
+                  </th> 
+                  <th>
+                    <mfDefaultSorter by="payment">Status<i class="fa fa-unsorted ml-1"></i> </mfDefaultSorter>
+                  </th>
+                  <th>
+                    <!-- <mfDefaultSorter by="address">Action<i class="fa fa-unsorted ml-1"></i> </mfDefaultSorter> -->
+                  </th>
+                </tr>
+              </thead>
+            
+              
+              <tbody>
+                <tr *ngFor="let data of expdata | filterpipe :searchStatus">
+                    <td>
+                    
+                     <div class="form-check form-check-inline container">
+                       <input class="form-check-input" type="checkbox"  (change)="changed($event)"   id="inlineCheckbox1" value="option1">
+                     </div>
+                    </td>
+                    <td class="case"><b>{{data.invoice}}</b></td>     
+                    <td>{{data.title}}</td>     
+                    <td>{{data.model1.year}}-{{data.model1.day}}-0{{data.model1.month}}</td>
+                    <td>{{data.tax}}</td>
+                  
+                    <td>{{data.total}}</td>
+                    <td>
+                     <form class="form-sample" [formGroup]="selectForm">
+                     <div class="form-group groups">
+                       <select  class="form-control selects"  (change)="onchange($event)" >
+                         <option selected>{{data.payment}}</option>
+                         <option >Approved</option>
+                         <option >Pending</option>
+                         <option >Rejected</option>
+
+
+                        
+                       </select>
+                     </div>
+                   </form>
+                    </td>
+                    <td> <i (click)="view($event)" style="cursor: pointer;" class="mdi mdi-eye mr-1"></i></td>
+                 </tr>
+                <tr *ngIf = "!expdata || expdata.length==0">
+                  <td colspan="8" style="text-align: center;">
+                    <img src="assets/images/img_empty_status.png"  alt="No Data Image" style="width: 100px;height:100px;">
+                    <h6>No data found</h6>
+                  </td>
+              </tr>
+              </tbody>
+              <!-- <tfoot>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                    <td>
+                        <mfBootstrapPaginator></mfBootstrapPaginator>
+                    </td>
+                </tr>
+                </tfoot>  -->
+            </table>
+          </div>
+          </div>
+
+          <div *ngIf="table2">
+            <div class="table-responsive">
+               <table class="table table-bordered  " [mfData]="this.archiveddata" #mf="mfDataTable" [mfRowsOnPage]="5">
+                 <thead>
+                   <tr>
+                     <!-- <th>
+                         <mfDefaultSorter by="sequencyId">S.No<i class="fa fa-unsorted ml-1"></i></mfDefaultSorter>
+                       </th> -->
+                     <th>
+                       <mfDefaultSorter by="invoice">P.O Number<i class="fa fa-unsorted ml-1"></i></mfDefaultSorter>
+                     </th>
+                     <th>
+                       <mfDefaultSorter by="title">Client<i class="fa fa-unsorted ml-1"></i></mfDefaultSorter>
+                     </th> 
+                     <th>
+                       <mfDefaultSorter by="month">Date<i class="fa fa-unsorted ml-1"></i></mfDefaultSorter>
+                     </th>
+                     <th>
+                       <mfDefaultSorter by="tax">GSTIN <i class="fa fa-unsorted ml-1"></i></mfDefaultSorter>
+                     </th>  
+                     <th>
+                       <mfDefaultSorter by="total">Total<i class="fa fa-unsorted ml-1"></i> </mfDefaultSorter>
+                     </th> 
+                     <th>
+                         <mfDefaultSorter by="total">Status<i class="fa fa-unsorted ml-1"></i> </mfDefaultSorter>
+                       </th>
+                       <th>
+                         <mfDefaultSorter by="total">Action<i class="fa fa-unsorted ml-1"></i> </mfDefaultSorter>
+ 
+                       </th>
+                   </tr>
+                 </thead>
+               
+                 
+                 <tbody>
+                   <tr *ngFor="let data of archiveddata  | filterpipe :searchStatus">
+                     <!-- <td>{{data.sequencyId + 1}}</td>      -->
+ 
+                       <td class="case"><b>{{data.invoice}}</b></td>     
+                       <td>{{data.title}}</td>     
+                       <td>{{data.model1.year}}-{{data.model1.day}}-0{{data.model1.month}}</td>
+                       <td>{{data.tax}}</td>
+                       <td>{{data.total}}</td>
+                       <td ><a *ngIf="data.payment== 'Approved' " style="color: green;">{{data.payment}}</a>
+                         <a *ngIf="data.payment== 'Rejected' " style="color: red;">{{data.payment}}</a></td>
+                       
+                         <td class="icons"  style="    font-size: 15px;"><a *ngIf="data.payment== 'Approved' " ><i class="menu-icon mdi mdi-folder-plus mr-3" style="color: green;" (click)="genpurchase($event)"></i><i (click)="openLargeModalPopup(viewQuot);pdfdata($event)" class="menu-icon mdi mdi-eye"></i></a>
+                           <a *ngIf="data.payment== 'Rejected' " ><i class="menu-icon mdi mdi-delete mr-3" style="color: red;"></i><i class="menu-icon mdi mdi-eye"></i></a></td>
+                      
+                           <!-- <td> <i (click)="view($event)" style="cursor: pointer;" class="mdi mdi-eye mr-1"></i></td> -->
+                    
+                     <!-- generate P.O -->
+                     <ng-template #viewQuot let-c="close" let-d="dismiss" >
+                           
+                      <div class="modal-body" id="pdff">
+                      <div class="row" style="color: black;margin-top: 1%">
+                        <div class="col-md-3">
+                            <img src="../../assets/unnamed.png" alt="logo" style="height:35px;width:174px"/>
+                        </div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-4" style="font-size: 12px">
+                         <small>Corporate Office</small> 
+                         <small>R/O # 1731,Frist Floor,</small> <br>
+                         <small> Frist Lane,Road No 12,Banjara Hills,</small> <br>
+                         <small>Hyderabad,Telanagana,</small> <br>
+                         <small>India-500034</small>
+                        </div>
+                        <div class="col-md-2" style="font-size: 12px">
+                            <small>Contact US</small> <br>
+                            <small>(+91) 040 23335200</small> <br>
+                            <small>(+91) 9493 980 710</small> <br>
+                            <small>(+91) 7702 622 233</small>
+                        </div>
+                        <div class="col-md-2" style="font-size: 12px">
+                         <small>Email:info@upsteer.com</small> <br>
+                         <small>Web:www.upsteer.com</small>
+                        </div>
+                    </div>
+                       <h3 class="text-center p-2"> <u>Purchase Order</u> </h3>
+                        
+                       <div class="table-responsive">
+                          <table class="table-bordered mb-2 newtable">
+                            <thead>
+                              <tr>
+                                <th class="f_s_13">Attention To:</th>
+                                <th class="f_s_13">Delivery Address:</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td class="pl-1">
+                                  <div class="f-w-5 f_s_13 mb-1"> {{title}}</div>
+                  
+                                  <div class="f_s_12 mb-1">
+                                    <span class="f-w-5 mr-1">Corp Off</span>
+                                    <span>:Indian Institute of Surveiying & Mapping , Uppal RD, Hyderabad, Telanagana</span>
+                                  </div>   
+                                  <div class="f_s_12 mb-1">
+                                    <span class="f-w-5 mr-1">Land Line</span>
+                                    <span>:+{{phonenumber}}</span>
+                                  </div>
+                                  <div class="f_s_12 mb-1">
+                                    <span class="f-w-5 mr-1">Email</span>
+                                    <span>:{{email}}</span>
+                                  </div>     
+                                </td>
+                                <td class="pl-1">
+                                  <div class="f-w-5 f_s_13 mb-1"> UPSTEER TEK SOLUTIONS PVT LTD</div>
+                  
+                                  <div class="f_s_12 mb-1">
+                                    <span class="f-w-5 mr-1">Corp Off</span>
+                                    <span>:Indian Institute of Surveiying & Mapping , Uppal RD, Hyderabad, Telanagana</span>
+                                  </div>   
+                                  <div class="f_s_12 mb-1">
+                                    <span class="f-w-5 mr-1">Mobile</span>
+                                    <span>:+91 7897846646</span>
+                                  </div>
+                                  <div class="f_s_12 mb-1">
+                                    <span class="f-w-5 mr-1">Land Line</span>
+                                    <span>:+91 7897846646</span>
+                                  </div>
+                                  <div class="f_s_12 mb-1">
+                                    <span class="f-w-5 mr-1">Email</span>
+                                    <span>:teehhdh@gmail.com</span>
+                                  </div>     
+                                </td>
+                                      
+                              </tr>
+                              <tr>
+                                <td colspan="1">
+                                  <div class="row p-0 m-0 f_s_11">
+                                  <div class="col-6 pl-1 border-right">
+                                    <span>
+                                      GST#
+                                    </span>
+                                    
+                                  </div>
+                                  <div class="col-6">
+                                    <span>{{tax}}</span>
+                                  </div>
+                              </div>
+                            </td>
+                            <td colspan="1">
+                              <div class="row p-0 m-0 f_s_11">
+                                <div class="w-50 pl-1">
+                                  <span>
+                                    GST#
+                                  </span>
+            
+                                </div>
+                                <div class="w-50 border-left pl-2">
+                                  <span>36AAUFS5784P1ZV</span>
+                                </div>
+                              </div>
+                            
+                        </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                       </div>
+
+                       <div class="table-responsive mt-4">
+                        <table class="table table-bordered newtable text-center">
+                            <thead>
+                              <tr>
+                                <th>P.O Date</th>
+                                <th>P.O Number #</th>
+                                <th>Credit Limit</th>
+                                <th>Shipping Type</th>
+                                <th>Delivery Type</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>{{date}}/{{month}}/{{year}}</td>
+                                <td>{{invoice}}</td>
+                                <td>One Month</td>
+                                <td>By Road</td>
+                                <td>Urgent</td>
+                              </tr>
+                            </tbody>
+                        </table>
+                      </div>
+
+                      <div class="table-responsive mt-4">
+                        <table class=" table-bordered newtable">
+                          <thead>
+                            <tr class="f_s_13" style="text-align: center;">
+                              <th style="height: 40px;" class="pl-2">S. NO.</th>
+                              <th class="pl-2">Description</th>
+                              <th class="pl-2">Quantity</th>
+                              <th class="pl-2">Unit Price</th>
+                              <th class="pl-2">Amount</th>
+                            </tr>
+                          </thead>
+                           <tbody>
+                             <tr style="height: 40px;font-size: 12px;
+                             text-align: center;" *ngFor="let data of pdfsdata">
+                               <td>{{data.sequencyId+1}}</td>
+                               <td>{{itemname}}</td>
+                               <td>{{data.itemquan}}</td>
+                               <td>{{data.itemcost}}.00</td>
+                               <td>{{data.price}}.00</td>
+                              
+                             </tr>
+                             <tr>
+                              <td colspan="3" class="p-2 f_s_12">
+                              <!-- <span class="font-weight-bold">Declaration:</span>
+                              <span>Payment should be made in the name of UPSTEER TEK SOLUTIONS PRIVATE LIMITED through NEFT/RTGS/WIRE TRANSFER/ACCOUNTS PAYEE CHEQUE ONLY</span> -->
+                              </td>
+                              <td class="f_s_13">SUBTOTAL</td>
+                              <td class="some">{{subtot}}.00</td>
+                            </tr>
+                            <tr>
+                              <td colspan="3" rowspan="3" class="pt-2 pl-2">
+                                  <!-- <span class="font-weight-bold f_s_13">Our Bank Details</span>
+                                  <table class="f_s_13 w-100 mt-3 innertable">
+                                    <tbody>
+                                      <tr >
+                                        <td style="width:34%">Account Name</td>
+                                        <td>UPSTEER TEK SOLUTIONS PVT LTD.</td>
+                                      </tr>
+                                      <tr>
+                                        <td>Account Number</td>
+                                        <td>038205003638</td>
+                                      </tr>
+                                      <tr>
+                                        <td>Bank Name</td>
+                                        <td>ICICI Bank</td>
+                                      </tr>
+                                      <tr>
+                                        <td>Bank Branch</td>
+                                        <td>Road No. 12, Banjara Hills, Hyderabad</td>
+                                      </tr>
+                                      <tr>
+                                        <td>IFSC Code</td>
+                                        <td>ICIC0000382</td>
+                                      </tr>
+                                    </tbody>
+                                  </table> -->
+                              </td>
+                              <td class="f_s_13">TOTAL GST@18%</td>
+                              <td  class="some">{{vatper}}.00</td>
+                            </tr>
+
+                            <tr>
+                              <td class="f_s_13">TOTAL</td>
+                              <td  class="some">{{total}}.00</td>
+                            </tr>
+                            <tr>
+                              <td colspan="2" class="money">
+                                <span class="text-center">Total Amount Payable in Words:</span>
+                                <span class="text-center">Twenty Two Lacks Six Thousand One Hundred Twenty-Eight Rupees Only.</span>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td colspan="5" class="pl-2">
+                                <span class="font-weight-boldn f_s_12">Terms & Conditions:</span>
+                                <ol class="f_s_10">
+                                  <li>Price including the GST.</li>
+                                  <li>Estimated delivery time will be one to two weeks from the date of placing order.</li>
+                                  <li>Price quoted will have the validity of 30 days.</li>
+                                  <li>Order once processed cannot be cancelled under any circumstances.</li>
+                                </ol>
+                              </td>
+                            </tr>
+                           </tbody>
+                        </table>
+                      </div>
+                        
+
+                        <!-- <div class="row " style="margin-top: 40px;">
+                           <div class="col-md-3">
+                             <h6 class="hai">UPSTEER TEK SOLUTIONS PVT LTD</h6>
+                             <p class="hai">UPSTEER TEK SOLUTIONS PVT LTD</p>
+
+                           </div>
+                        </div> -->
+                    </div>
+                    <div class="row p-2">
+                      <div class="col-md-12">
+                      <button (click)="pdf()" class="btn btn-sm" style="background-color:#2f3e65 ;color: white;font-size: 10px;float: right;">Proceed to Download</button>
+                    </div>
+                    </div>
+                    </ng-template>
+                     <!-- end P.O -->
+                          </tr>
+                   <tr *ngIf = "!archiveddata || archiveddata.length==0">
+                     <td colspan="8" style="text-align: center;">
+                       <img src="assets/images/img_empty_status.png"  alt="No Data Image" style="width: 100px;height:100px;">
+                       <h6>No data found</h6>
+                     </td>
+
+                 </tr>
+                 </tbody>
+               
+               </table>
+             </div>
+             </div>
+
+        </div>
+      </div>
+    </div>
+  </div>

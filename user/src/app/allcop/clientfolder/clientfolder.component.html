@@ -1,0 +1,52 @@
+<div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h6>&nbsp;ClientData</h6>
+                <div class="float-right">
+                  <button class="btn btn-md" (click)="back()" style="background-color:#2f3e65 ;color: white;font-size: 10px;float: right;">Back<i class="menu-icon mdi mdi-arrow-right ml-2"></i> </button>
+                </div>
+                <div class="container-fluid mr-left-10">
+                    <br>
+                    <div *ngFor="let fol of MyArrayType; let i = index">
+                        <div class="float-left" (click)="alldata(fol,i)">
+                        <img src=".\assets\folder.png"  style="width:45px;" >
+                        <br>
+                          <span class="float-left mr-4" ><small>{{fol.folder}}</small></span>
+                        </div>  
+                        <!-- <div class="float-left">
+                            <img src=".\assets\folder.png"   style="width:45px;" >
+                            <br>
+                              <span class="float-left mr-4"><small>Invoice</small></span>
+                            </div> 
+                            <div class="float-left ml-4">
+                                <img src=".\assets\folder.png"   style="width:45px;" >
+                                <br>
+                                  <span class="float-left mr-4"><small class="">Purchase Order</small></span>
+                                </div> 
+                                <div>
+                                    <img src=".\assets\folder.png"   style="width:45px;" >
+                                    <br>
+                                      <span class="float-left mr-4"><small class="">Delivery Challan</small></span>
+                                    </div>  -->
+                        
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+

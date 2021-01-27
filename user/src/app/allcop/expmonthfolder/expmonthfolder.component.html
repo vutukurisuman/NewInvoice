@@ -1,0 +1,59 @@
+<div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+      <div class="card">
+        <div class="card-body">
+          
+          <h6>&nbsp; clients</h6>
+             
+             <div class="container-fluid mr-left-10"> 
+              <br>  
+              
+                <div *ngFor="let m of archivedata; let i = index" class="float-left mr-4">
+                  <img src=".\assets\folder.png" (click)="monthdata(m.created.month)" style="width: 45px;">
+                  <br>
+                  <div [ngSwitch]="m.created.month">
+                      <div *ngSwitchCase="1">
+                        <span><small>January</small></span>
+                      </div>
+                      <div *ngSwitchCase='2'>
+                        <span><small>February</small></span>
+                      </div>
+                      <div *ngSwitchCase='3'>
+                        <span><small>March</small></span>
+                      </div>
+                      <div *ngSwitchCase='4'>
+                        <span><small>April</small></span>
+                      </div>
+                      <div *ngSwitchCase='5'>
+                        <span><small>May</small></span>
+                      </div>
+                      <div *ngSwitchCase='6'>
+                        <span><small>June</small></span>
+                      </div>
+                      <div *ngSwitchCase='7'>
+                        <span><small>July</small></span>
+                      </div>
+                      <div *ngSwitchCase='8'>
+                        <span><small>August</small></span>
+                      </div>
+                      <div *ngSwitchCase='9'>
+                        <span><small>September</small></span>
+                      </div>
+                      <div *ngSwitchCase='10'>
+                        <span><small>October</small></span>
+                      </div>
+                      <div *ngSwitchCase='11'>
+                        <span><small>November</small></span>
+                      </div>
+                      <div *ngSwitchCase='12'>
+                        <span><small>December</small></span>
+                      </div>
+                  </div>
+                  <!-- <span><small>{{m.created.month}}</small></span>  -->
+                </div>
+              </div>
+        
+      </div>
+      </div>  
+    
+     

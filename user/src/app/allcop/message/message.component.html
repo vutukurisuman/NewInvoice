@@ -1,0 +1,73 @@
+
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+          <section class="msger">
+              <header class="msger-header mt-0">
+                <div class="msger-header-title">
+                  <i class="fas fa-comment-alt"></i> CHAT WITH ADMIN
+                </div>
+                <div class="msger-header-options">
+                  <span style="cursor: pointer;"><i class="fa fa-angle-double-left mr-2 "></i>Back</span>
+
+                </div>
+              </header>
+            <div class="msger-chat" style="height: 300px;overflow-y:scroll;  ">
+
+            
+              <main class=" pb-0 pt-0" *ngFor="let data of messagesarray" #scrollBottom>
+                <div class="msg left-msg" *ngIf="data.operator==='Admin'" >
+                  <div
+                   class="msg-img"
+                   style="background-image: url(https://image.flaticon.com/icons/svg/327/327779.svg)"
+                  ></div>
+            
+                  <div class="msg-bubble">
+                    <div class="msg-info">
+                      <div class="msg-info-name">ADMIN</div>
+                      <div class="msg-info-time">  {{data.date}}</div>
+                    </div>
+            
+                    <div class="msg-text" style="    font-size: 13px;">
+                      {{data.message}}
+                    </div>
+                  </div>
+                </div>
+                <!-- <ul *ngFor="let data of messagesarray" style="list-style-type: none;">
+                  <li>
+                    <a *ngIf="data.operator==='Admin'" style="float: left;"><small>A</small>{{data.message}}</a>
+                    <a *ngIf="data.operator==='User'" style="    margin-left: 90%;">{{data.message}}</a>
+
+                  </li>
+                </ul> -->
+                <div class="msg right-msg"  *ngIf="data.operator==='Emp'">
+                  <div
+                   class="msg-img"
+                   style="background-image: url(https://image.flaticon.com/icons/svg/145/145867.svg)"
+                  ></div>
+            
+                  <div class="msg-bubble">
+                    <div class="msg-info  text-black">
+                      <div class="msg-info-name">YOU</div>
+                      <div class="msg-info-time">12:46</div>
+                    </div>
+            
+                    <div class="msg-text text-black" style="    font-size: 13px;">
+                      {{data.message}}
+
+                    </div>
+                  </div>
+                </div>
+              </main>
+            </div>
+              <form class="msger-inputarea"  [formGroup]="registerForm" >
+                <input type="text" formControlName="firstName" class="form-control msger-input" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" /> <br>
+                <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                    <div *ngIf="f.firstName.errors.required">Message is required</div>
+                </div> {{valid}}
+                <button class="msger-send-btn " (click)="messages()"><i class="fa fa-send p-1"></i></button>
+              </form>
+            </section>
+        </div>
+    </div>
+
+  

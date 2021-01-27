@@ -1,0 +1,146 @@
+<div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+      <div class="card">
+        <div class="card-body">
+          <div class="row">
+              <div class="col-md-5">
+                
+                <p style="font-weight: 500;font-size: 12px;" ><i class="menu-icon mdi mdi-chevron-left mr-2"  (click)="back()"></i>PREVIEW EXPENSE </p>
+
+              </div>
+              <div class="col-md-3">
+                <button type="button" class="btn btn-sm " (click)='pdf()' style="background-color:
+                #2f3e65 ;color: white;"> <i class="menu-icon mdi mdi-cloud-download"></i>Print Expense</button>
+              </div>
+              <div class="col-md-3">
+            
+            </div>
+          </div>
+
+            <div class="row" id="pdff">
+           <div class="col-md-3"></div>
+           <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-2">
+                    <img class="p-3" src="../../assets/l.png" style="width: 96px;
+                    border-radius: 25px;" alt="">
+                </div>
+                <div class="col-md-6"></div>
+                <div class="col-md-4">
+                   <table class="tanle1 p-3 mt-3" style="float: right;">
+                       <tr>
+                           <th>EXPENSE  </th>
+                           <td>:</td>
+                           <td>{{expense}}</td>
+                       </tr>
+                       <tr>
+                        <th>Created</th>
+                        <td>:</td>
+                        <td>{{createdyear}}-{{createdmon}}-{{createdday}}</td>
+                    </tr>
+                    <tr>
+                        <th>Due</th>
+                        <td>:</td>
+                        <td>{{dueyear}}-{{duemon}}-{{dueay}}</td>
+                    </tr>
+                   </table>
+
+                </div>
+
+
+           </div>
+
+           <div class="row mt-2">
+            <div class="col-md-5">
+                <p style="font-weight: 500;font-size: 12px;" >CUSTOMER DETAILS: </p>
+                <ul class="p-1 cust">
+                    <li>{{title}}</li>
+                    <li>{{email}}</li>
+                    <li>{{address}} , {{city}}</li>
+                 </ul>
+            </div>
+            <div class="col-md-3"></div>
+            <div class="col-md-4">
+                <p style="font-weight: 500;font-size: 12px;float:right;">COMPANY DETAILS: </p>
+                <ul class="p-1 comp" style="text-align: justify;">
+                    <li>Upsteer tek solutions</li>
+                         <li>Banjara Hills </li>
+                         <li>MLA Colony,RoadNo:12</li>
+                         <li>Hyderabad,Telanagana</li>
+                 </ul>
+            </div>
+
+           </div>
+
+           <div class="row mt-4">
+               <div class="col-lg-12">
+           <div class="table-responsive" >
+            <table class="table " id="tableId" style="width: 52%;">
+              <thead style="padding:0px">
+                <tr>            
+                  <th>
+                   Item
+                  </th>
+                  <th>
+                    Cost
+                  </th>
+                  <th>
+                    Quantity
+                  </th>
+                  <th>
+                    Price
+                  </th>
+                  
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let data of iddata">   
+                   <td>{{data.itemname}}</td>    
+                   <td>{{data.itemcost}}</td>
+                   <td>{{data.itemquan}}</td>         
+                   <td>{{data.price}}</td>
+                </tr>
+                <tr style="border:0px !important;">
+                    <td></td>
+                    <td></td>
+                    <td>Subtotal</td>
+                    <td >{{subtotal}}</td>
+                </tr>
+                <tr class="total_table">
+                    <td></td>
+                    <td></td>
+                    <td>VAT</td>
+                    <td>{{vatper}}</td>
+                </tr>
+                <tr class="total_table">
+                    <td></td>
+                    <td></td>
+                    <td style="font-weight:bold; ">Total</td>
+                    <td  style="font-weight:bold; border-top:1px solid #f2f2f2 !important" >{{total}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+    </div>
+
+
+    <div class="row mt-4">
+        <div class="col-md-4">
+            <p style="font-weight: 500;font-size: 12px;" class="ml-3">COMMENTS </p>
+            <small class="ml-3">{{comments}}</small>
+        </div>
+        <div class="col-md-4"></div>
+
+        <div class="col-md-4" style="    text-align: end;">
+            <p style="font-weight: 500;font-size: 12px;float: right;" class="ml-3">PAYMENT METHOD </p>
+            <small  >{{paymentbank}}</small>
+             
+        </div>
+    </div>
+           <div class="col-md-3"></div>
+        </div>
+         </div>
+      </div>   
+    </div>
+</div>     

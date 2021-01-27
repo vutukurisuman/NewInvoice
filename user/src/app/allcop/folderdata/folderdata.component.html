@@ -1,0 +1,37 @@
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+            <div class="container">   
+            <h6>folder data</h6>
+            <br>
+            <table class="table table-condensed table-borderless col-md-6" >
+            <thead>
+                <th>Invoices</th>
+                <th>Expences</th>
+            </thead>
+            <tbody>
+                <tr>
+          <td>  <div *ngFor="let x of invoicedata">
+            <button type="button" class="btn btn-danger btn-sm" (click)="fun(x._id)">Pdf</button>&nbsp; &nbsp;<small>{{x.title}}</small>
+            <br>
+            <br>
+           <!-- <p>{{name}}</p> -->
+        </div></td>
+    <td>
+        <div *ngFor="let x of expencedata">
+            <button type="button" class="btn btn-danger btn-sm" (click)="funexp(x.title)">Pdf</button>&nbsp; &nbsp;<small>{{x.title}}</small>
+           <br>
+           <br>
+            
+        </div>
+    </td>
+    </tr>
+    </tbody>
+    </table>
+    </div> 
+        </div>
+    </div>
+</div>
+
+

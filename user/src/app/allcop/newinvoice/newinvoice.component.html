@@ -1,0 +1,451 @@
+<div class="row grid-margin no-gutters" style="box-shadow: 0 0 2px #dcdce9;" >
+    <div class="col-lg-4"  >
+      <div class="card" style="background-color: #e6ecfa;"> 
+        <ul id="menu" class="mt-3">
+            <li class="ml-2 mr-5 text-muted" style="font-size: 23px;"><i class="mdi mdi-chevron-left text-muted"></i> </li>
+            <li class="ml-5" style="color: black;">NEW INVOICE</li>
+            <li><a href="#"></a></li>
+          </ul>
+         
+        <div class="p-2" style="height:920px;">
+          <form #studentForm="ngForm" (ngSubmit)="studentForm.form.valid ">
+            <div class="row">
+              
+                <div class="col-md-1"></div>
+                <div class="col-md-3"><p class="text-center p-1">Title</p></div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input type="text" id="invoice" name="invoice" placeholder="Invoice#"
+                            class="form-control form_color" [(ngModel)]="ServiceData.invoice"
+                            #invoice="ngModel" [(ngModel)]="name"
+                            [ngClass]="{'is-invalid': studentForm.submitted && invoice.invalid}"
+                            required />
+                        <div class="invalid-feedback" *ngIf="studentForm.submitted && invoice.invalid">
+                            <div *ngIf="invoice.errors.required">University Name is Required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>  
+            <div class="row mt-1">
+                <div class="col-md-1"></div>
+                <div class="col-md-4">
+                    <p style="font-weight: 500;font-size: 14px;">CUSTOMER ?</p>
+                </div>
+                <!-- <div class="col-md-1"></div> -->
+                <div class="col-md-5">
+                    <div class="form-group">
+                    <!-- <div ngbDropdown placement="bottom-left" class="d-inline-block"  >
+                        <a style="float: right;" id="dropdownMenuIconButton7" ngbDropdownToggle>
+                          <i class="mdi mdi-account"></i>
+                        </a> -->
+                        <select id="inputState" style="font-size: 16px;" (change)="onchange($event)" class="select-control form_color" >
+                            <option >Choose Client</option>
+                            <option  *ngFor="let data of  alldata">{{data.clientname}}</option>
+                          </select>
+                      
+                </div>
+                <!-- <div class="col-md-2"></div> -->
+            </div>
+            </div>
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-10">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <input type="text" id="title" name="title" class="form-control form_color"
+                                [(ngModel)]="ServiceData.title" #title="ngModel" [(ngModel)]="name1"
+                                placeholder="Enter Title"
+                                [ngClass]="{'is-invalid': studentForm.submitted && title.invalid}" required />
+                            <div class="invalid-feedback" *ngIf="studentForm.submitted && title.invalid">
+                                <div *ngIf="title.errors.required">Student ID Required</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <input type="text" id="address" name="address" placeholder="Enter Address"
+                                class="form-control form_color" [(ngModel)]="ServiceData.address"
+                                #address="ngModel"[(ngModel)]="name2"
+                                [ngClass]="{'is-invalid': studentForm.submitted && address.invalid}"
+                                required />
+                            <div class="invalid-feedback" *ngIf="studentForm.submitted && address.invalid">
+                                <div *ngIf="address.errors.required">Address Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <input type="text" id="city" name="city" placeholder="Enter City"
+                                class="form-control form_color" [(ngModel)]="ServiceData.city" #city="ngModel" [(ngModel)]="name3"
+                                [ngClass]="{'is-invalid': studentForm.submitted && city.invalid}" required />
+                            <div class="invalid-feedback" *ngIf="studentForm.submitted && city.invalid">
+                                <div *ngIf="city.errors.required">City is Required</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <input type="text" id="country" name="country" placeholder="Country"
+                                class="form-control form_color" [(ngModel)]="ServiceData.country" [(ngModel)]="name4"
+                                #country="ngModel"
+                                [ngClass]="{'is-invalid': studentForm.submitted && country.invalid}"
+                                required />
+                            <div class="invalid-feedback" *ngIf="studentForm.submitted && country.invalid">
+                                <div *ngIf="country.errors.required">College Name is Required</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <input type="text" id="tax" name="tax"
+                                placeholder="Tax" class="form-control form_color"
+                                [(ngModel)]="ServiceData.tax" #tax="ngModel" [(ngModel)]="name5"
+                                [ngClass]="{'is-invalid': studentForm.submitted && tax.invalid}"
+                                required />
+                            <div class="invalid-feedback" *ngIf="studentForm.submitted && tax.invalid">
+                                <div *ngIf="tax.errors.required">Tax is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" placeholder="Email"
+                                class="form-control form_color" [(ngModel)]="ServiceData.email"
+                                #email="ngModel" [(ngModel)]="name6"
+                                [ngClass]="{'is-invalid': studentForm.submitted && email.invalid}" required />
+                            <div class="invalid-feedback" *ngIf="studentForm.submitted && email.invalid">
+                                <div *ngIf="email.errors.required">Email is Required</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <input type="text" id="phonenumber" name="phonenumber" placeholder="number"
+                                class="form-control form_color" [(ngModel)]="ServiceData.phonenumber"
+                                #phonenumber="ngModel" [(ngModel)]="name7"
+                                [ngClass]="{'is-invalid': studentForm.submitted && phonenumber.invalid}" required />
+                            <div class="invalid-feedback" *ngIf="studentForm.submitted && phonenumber.invalid">
+                                <div *ngIf="phonenumber.errors.required">phonenumber is Required</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-1"></div>
+            </div>
+
+            <div class="row mt-2">
+                <!--Category Name-->
+                <div class="col-md-1"></div>
+                <div class="col-md-3"><p class="text-center p-1">VAT(%)</p></div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <input type="number" id="vat" name="vat" 
+                            class="form-control form_color" [(ngModel)]="ServiceData.vat" 
+                            #vat="ngModel" (keyup)="getName(i)"
+                            [ngClass]="{'is-invalid': studentForm.submitted && vat.invalid}"
+                            required />
+                        <div class="invalid-feedback" *ngIf="studentForm.submitted && vat.invalid">
+                            <div *ngIf="vat.errors.required">VAT is Required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+
+            
+
+            <div class="row mt-2">
+                <!--Category Name-->
+                <div class="col-md-1"></div>
+                <div class="col-md-3"><p class="text-center ">Discount</p></div>
+                <div class="col-md-4">
+                    <div class="form-group ">
+                        <input type="number" id="discount" name="discount" 
+                            class="form-control form_color" [(ngModel)]="ServiceData.discount" 
+                            #discount="ngModel"
+                            [ngClass]="{'is-invalid': studentForm.submitted && discount.invalid}"
+                            required />
+                        <div class="invalid-feedback" *ngIf="studentForm.submitted && discount.invalid">
+                            <div *ngIf="discount.errors.required">Discount is Required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+            
+            <div class="row mt-2">
+                <div class="col-md-1"></div>
+                <div class="col-md-10">
+                    <div class="form-group">
+                    <p style="font-weight: 500;font-size: 14px;">COMMENTS/NOTES </p>
+                        
+                        <textarea type="text" id="comments" name="comments" placeholder="COMMENTS"
+                            class="form-control form_color" [(ngModel)]="ServiceData.comments"
+                            #comments="ngModel" [(ngModel)]="name8"
+                            [ngClass]="{'is-invalid': studentForm.submitted && comments.invalid}" required ></textarea>
+                        <div class="invalid-feedback" *ngIf="studentForm.submitted && comments.invalid">
+                            <div *ngIf="comments.errors.required">comments is Required</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1"></div>
+
+            </div>
+            <div class="row mt-2">
+                <div class="col-md-1"></div>
+                <div class="col-md-10">
+                    <div class="form-group">
+                    <p style="font-weight: 500;font-size: 14px;">PAYMENT METHOD </p>
+                        
+                        <textarea type="text" id="payment" name="paymentbank" placeholder="PAYMENTMETHOD"
+                            class="form-control form_color" [(ngModel)]="ServiceData.paymentbank"
+                            #paymentbank="ngModel"
+                            [ngClass]="{'is-invalid': studentForm.submitted && paymentbank.invalid}" required ></textarea>
+                        <div class="invalid-feedback" *ngIf="studentForm.submitted && paymentbank.invalid">
+                            <div *ngIf="paymentbank.errors.required">payment is Required</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1"></div>
+
+            </div>
+            <!-- <button  type="submit" class="btn btn-sm  btn-rounded"
+            *ngIf="studentForm.form.valid">Next</button> -->
+          </form>    
+        </div>
+
+      </div>
+    </div>
+
+
+
+    <div class="col-lg-8" >
+        <div class="card" style="padding: 15px;">
+          <form #studentForm1="ngForm" (ngSubmit)="studentForm.form.valid">
+
+            <div class="row mt-5">
+                
+              <div class="col-md-4">
+                 <img class="p-3" src="../../assets/l.png" style="width: 108px;
+                 border-radius: 25px;" alt="">
+              </div>
+              <div class="col-md-3"></div>
+              <div class="col-md-4">
+                <p>Invoice # :{{name}}</p>
+                    
+                <div class="row">
+                    <div class="col-md-4">
+                        <small class="mt-2">Created :</small>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="form-group"> 
+                            <div class="input-group" style="width:95%;">
+                              <input class="form-control" placeholder="yyyy-mm-dd" 
+                                     name="dp1" [(ngModel)]="ServiceData.model1" ngbDatepicker [footerTemplate]="footerTemplate1" placeholder="{{currentDate | date:'yyyy-MM-dd'}}" #d1="ngbDatepicker" style="border:0px;margin-top:-5px;">
+                              <div class="input-group-append">
+                                <button class="btn btn-sm calendar" (click)="d1.toggle()" type="button" style="border:0px"></button>
+                              </div>
+                            </div>
+                          </div>
+                        <ng-template #footerTemplate1>
+                          <hr class="my-0">
+                          <button class="btn btn-primary btn-sm m-2 float-left" (click)="model1 = today; d.close()">Today</button>
+                          <button class="btn btn-secondary btn-sm m-2 float-right" (click)="d.close()">Close</button>
+                        </ng-template>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <small class="mt-2">Due :</small>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="form-group"> 
+                            <div class="input-group" style="width:95%;">
+                              <input class="form-control" placeholder="yyyy-mm-dd"
+                                     name="dp" [(ngModel)]="ServiceData.model" ngbDatepicker [footerTemplate]="footerTemplate" placeholder="{{currentDate | date:'yyyy-MM-dd'}}" #d="ngbDatepicker" style="border:0px;margin-top:-5px;">
+                              <div class="input-group-append">
+                                <button class="btn btn-sm calendar" (click)="d.toggle()" type="button" style="border:0px"></button>
+                              </div>
+                            </div>
+                          </div>
+                        <ng-template #footerTemplate>
+                          <hr class="my-0">
+                          <button class="btn btn-primary btn-sm m-2 float-left" (click)="model = today; d.close()">Today</button>
+                          <button class="btn btn-secondary btn-sm m-2 float-right" (click)="d.close()">Close</button>
+                        </ng-template>
+                    </div>
+                </div>
+
+               
+
+              </div>
+              <div class="col-md-1"></div>
+
+            </div>
+
+            <div class="row mt-3">
+                <div class="col-md-4">
+                    <p style="font-weight: 500;font-size: 14px;" class="ml-3">CUSTOMER DETAILS: </p>
+                     
+                     <ul class="p-1 ml-4">
+                        <li>{{ServiceData.title}}</li>
+                        <li>{{ServiceData.email}}</li>
+                        <li>{{ServiceData.phonenumber}}</li>
+                        <li>{{ServiceData.tax}}</li>
+                        <li>{{ServiceData.address}}</li>
+                        <li>{{ServiceData.city}}</li>
+                        <li>{{ServiceData.state}}</li>
+                        <li>{{ServiceData.country}}</li>
+                        
+                     </ul>
+                </div>
+                <div class="col-md-4"></div>
+
+                <div class="col-md-4">
+                    <p style="font-weight: 500;font-size: 14px;" class="ml-3">COMPANY DETAILS: </p>
+                     
+                     <ul class="p-1 ml-4">
+                         <li>Upsteer tek solutions</li>
+                         <li>Banjara Hills </li>
+                         <li>MLA Colony,RoadNo:12</li>
+                         <li>Near ACB Headquaters</li>
+                         <li>Hyderabad,Telanagana</li>
+                       
+                         
+                     </ul>
+                </div>
+            </div>
+
+           <div class="row p-2">
+               <div class="col-3">
+                  <p class="ml-3">Item</p>
+               </div>
+               <div class="col-3">
+               <p class="ml-3">Unit Cost</p>
+            </div>
+            <div class="col-2">
+                <p class="ml-3">+(%)</p>
+             </div>
+            <div class="col-2">
+             <p class="ml-3">Quantity</p>
+            </div>
+            <div class="col-2">
+               <p class="ml-1">Price</p>
+            </div>
+           </div>
+            <div class="row no-gutters">
+                <div class="col-md-12">
+                        <div class="row justify-content-center">
+                          <div class="col-md-12">
+                           
+
+                        <form class="form-sample" [formGroup]="profileForm">
+                            <div  formArrayName="products">
+                                <div  *ngFor="let group of getFormData.controls; let i=index">
+                                    <div [formGroupName]="i">
+                                        <div class="row p-1">
+                                        <div class="col-3 ">
+                                            <input type="text" class="form-control"  name='itemname' formControlName="itemname" placeholder="Item Name" />
+                                         </div>
+                                         <div class="col-3">
+                                            <input type="number" class="form-control"    name='itemcost' formControlName="itemcost" (keyup)="getName(i)" placeholder="Cost"  />
+                                      </div>
+                                      <div class="col-2">
+                                        <input type="number" class="form-control"    name='percentage' formControlName="percentage" (keyup)="getName(i)" placeholder="percentage"  />
+                                  </div>
+                                      <div class="col-2">
+                                        <input type="number" class="form-control"   name='itemquan' formControlName="itemquan" (keyup)="getName(i)" placeholder="Quantity"  />
+                                      </div>
+                                      <div class="col-2">
+                                        <input type="number" class="form-control"   name='price' formControlName="price"  (blur)="getName(i)" placeholder="Price" disabled/>
+                                        <a (click)="remove(i)"> <i style="color: red;cursor: pointer;" class="menu-icon mdi mdi-delete"></i></a>
+                                      
+                                    </div>
+                                      <!-- <div class="col-1">
+                                    </div> -->
+                                    </div>
+                                     </div>
+                                </div>
+                            </div>  
+                            <button type="button" class="btn btn-sm ml-2" (click)="addProduct()" style="background-color:
+                        #2f3e65 ;color: white;">Add row</button>
+                        
+                        
+                        <div class="row mt-3">
+                            <div class="col-md-8"> </div>
+                            <div class="col-md-2">
+                                <p>Subtotal:</p>
+                           </div>
+                           <div class="col-md-2">
+                            <input type="number" class="form-control border" (keyup)="getName(i)"  name='subtotal' formControlName="subtotal"  placeholder="subtotal"/>
+
+                         </div>
+                          </div>
+
+                          <div class="row">
+                            <div class="col-md-8"> </div>
+                            <div class="col-md-2">
+                                <p>GST(%):</p>
+                           </div>
+                           <div class="col-md-2">
+                            <input type="number" class="form-control border" (keyup)="getName(i)"  name='vatper' formControlName="vatper"  placeholder="vatper"/>
+
+                              <hr>
+                         </div>
+                          </div>
+
+                          <div class="row">
+                            <div class="col-md-8"> </div>
+                            <div class="col-md-2">
+                                <p class="font-bold">Total:</p>
+                           </div>
+                           <div class="col-md-2">
+                            <input type="number" class="form-control border"  name='total' formControlName="total"  placeholder="total"/>
+
+                         </div>
+                          </div>
+                        </form>
+                        
+
+                          </div>
+                        </div>    
+                </div>
+            </div>
+           
+            
+           
+              
+
+              <div class="row mt-4">
+                <div class="col-md-4">
+                    <p style="font-weight: 500;font-size: 14px;" class="ml-3">COMMENTS </p>
+                    <small class="ml-3">{{ServiceData.comments}}</small>
+                </div>
+                <div class="col-md-4"></div>
+
+                <div class="col-md-4">
+                    <p style="font-weight: 500;font-size: 14px;" class="ml-3">PAYMENT METHOD </p>
+                    <small class="ml-3 text-center">{{ServiceData.paymentbank}}</small>
+                     
+                </div>
+            </div>
+            <div class="mt-4 p-5" style="float: right;">
+            <!-- <button  type="submit" class="btn btn-md"
+                *ngIf="studentForm.form.invalid" style="background-color:
+                #2f3e65 ;color: white;">Next</button> -->
+                <button  type="submit" (click)="asset()" class="btn btn-md"
+                style="background-color:
+                #2f3e65 ;color: white;">Next</button>
+             </div>
+            </form>
+        </div>
+        </div>
+      
+</div>          

@@ -1,0 +1,284 @@
+<nav class="navbar  default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row" style="background-color: #2f3e65;">
+  <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center" style="background: none;">
+    <a class="navbar-brand brand-logo" href="index.html" style="background-color: none;">
+      <!-- <img src="../../assets/images/logomain.png" alt="logo" style="height: 33px;"/> --><h6 style="    color: white;
+    margin-top: 11px;
+    margin-left: 66px;
+    border: 2px solid;
+    padding: 8px;">INVOICE MANAGEMENT SYSTEM</h6>
+    </a>
+    <a class="navbar-brand brand-logo-mini" href="index.html">
+      <img  src="../../assets/download.jpg" alt="logo" />
+    </a>
+  </div>
+  <div class="navbar-menu-wrapper d-flex align-items-center">
+    <ul class="navbar-nav navbar-nav-left header-links d-none d-md-flex">
+      <li class="nav-item">
+        <!-- <a href="#" class="nav-link"> <i class="mdi mdi-plus"></i>
+          
+        </a> -->
+      </li>
+      
+    </ul>
+    <ul class="navbar-nav navbar-nav-right">
+      <li class="nav-item dropdown" ngbDropdown>
+        <a class="nav-link count-indicator dropdown-toggle text-white" id="messageDropdown" ngbDropdownToggle>
+          <i class="mdi mdi-file-document-box"></i>
+          <span class="count">7</span>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" ngbDropdownMenu aria-labelledby="messageDropdown">
+          <div class="dropdown-item">
+            <p class="mb-0 font-weight-normal float-left">You have 7 unread mails
+            </p>
+            <span class="badge badge-info badge-pill float-right">View all</span>
+          </div>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item preview-item">
+            <div class="preview-thumbnail">
+              <img src="assets/images/faces/face4.jpg" alt="image" class="profile-pic">
+            </div>
+            <div class="preview-item-content flex-grow">
+              <h6 class="preview-subject ellipsis font-weight-medium">David Grey
+                <span class="float-right font-weight-light small-text">1 Minutes ago</span>
+              </h6>
+              <p class="font-weight-light small-text">
+                The meeting is cancelled
+              </p>
+            </div>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item preview-item">
+            <div class="preview-thumbnail">
+              <img src="assets/images/faces/face2.jpg" alt="image" class="profile-pic">
+            </div>
+            <div class="preview-item-content flex-grow">
+              <h6 class="preview-subject ellipsis font-weight-medium">Tim Cook
+                <span class="float-right font-weight-light small-text">15 Minutes ago</span>
+              </h6>
+              <p class="font-weight-light small-text">
+                New product launch
+              </p>
+            </div>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item preview-item">
+            <div class="preview-thumbnail">
+              <img src="assets/images/faces/face3.jpg" alt="image" class="profile-pic">
+            </div>
+            <div class="preview-item-content flex-grow">
+              <h6 class="preview-subject ellipsis font-weight-medium"> Johnson
+                <span class="float-right font-weight-light small-text">18 Minutes ago</span>
+              </h6>
+              <p class="font-weight-light small-text">
+                Upcoming board meeting
+              </p>
+            </div>
+          </a>
+        </div>
+      </li>
+      <li class="nav-item dropdown" ngbDropdown>
+        <a class="nav-link count-indicator dropdown-toggle text-white" id="notificationDropdown" ngbDropdownToggle>
+          <i class="mdi mdi mdi-bell"></i>
+          <span class="count">4</span>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" ngbDropdownMenu aria-labelledby="notificationDropdown">
+          <a class="dropdown-item">
+            <p class="mb-0 font-weight-normal float-left">You have 4 new notifications
+            </p>
+            <span class="badge badge-pill badge-warning float-right">View all</span>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item preview-item">
+            <div class="preview-thumbnail">
+              <div class="preview-icon bg-success">
+                <i class="mdi mdi-alert-circle-outline mx-0"></i>
+              </div>
+            </div>
+            <div class="preview-item-content">
+              <h6 class="preview-subject font-weight-medium">Application Error</h6>
+              <p class="font-weight-light small-text">
+                Just now
+              </p>
+            </div>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item preview-item">
+            <div class="preview-thumbnail">
+              <div class="preview-icon bg-warning">
+                <i class="mdi mdi-tune-vertical mx-0"></i>
+              </div>
+            </div>
+            <div class="preview-item-content">
+              <h6 class="preview-subject font-weight-medium">Settings</h6>
+              <p class="font-weight-light small-text">
+                Private message
+              </p>
+            </div>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item preview-item">
+            <div class="preview-thumbnail">
+              <div class="preview-icon bg-info">
+                <i class="mdi mdi-email-outline mx-0"></i>
+              </div>
+            </div>
+            <div class="preview-item-content">
+              <h6 class="preview-subject font-weight-medium">New user registration</h6>
+              <p class="font-weight-light small-text">
+                2 days ago
+              </p>
+            </div>
+          </a>
+        </div>
+      </li>
+      <li class="nav-item dropdown d-none d-xl-inline-block" ngbDropdown>
+        <a class="nav-link dropdown-toggle" id="UserDropdown" ngbDropdownToggle>
+          <span class="profile-text text-white">Hello, {{username.firstName}}{{username.lastName}}   !</span>
+          <img class="img-xs rounded-circle" src="../../assets/download.jpg" alt="Profile image">
+        </a>
+        <div class="dropdown-menu dropdown-menu-right navbar-dropdown " ngbDropdownMenu aria-labelledby="UserDropdown">
+          <a class="dropdown-item p-0">
+            <div class="d-flex border-bottom">
+              <div class="py-3 px-4 d-flex align-items-center justify-content-center">
+                <i class="mdi mdi-bookmark-plus-outline mr-0 text-gray"></i>
+              </div>
+              <div class="py-3 px-4 d-flex align-items-center justify-content-center border-left border-right">
+                <i class="mdi mdi-account-outline mr-0 text-gray"></i>
+              </div>
+              <div class="py-3 px-4 d-flex align-items-center justify-content-center">
+                <i class="mdi mdi-alarm-check mr-0 text-gray"></i>
+              </div>
+            </div>
+          </a>
+          <a class="dropdown-item mt-2">
+            Manage Accounts
+          </a>
+          <a class="dropdown-item">
+            Change Password
+          </a>
+          <a class="dropdown-item">
+            Check Inbox
+          </a>
+          <a class="dropdown-item" (click)=" logout()">
+            Sign Out
+          </a>
+        </div>
+      </li>
+    </ul>
+    <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" (click)="toggleOffcanvas()">
+      <span class="mdi mdi-menu"></span>
+    </button>
+
+
+
+  </div>
+ </nav>
+
+
+
+ <nav class="navbar navbar-expand-lg  col-lg-12 col-12 p-0" style="margin-top: 60px;margin-left: 0;">
+  <div class="row" style="width:100%;margin: 0 !important;">
+    <div class="col-lg-12 " id="mynavbar">
+      <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center" style="background: none;">
+        <a class="navbar-brand brand-logo" href="index.html" style="background-color: none;float:left" style="font-size:15px">
+          <!-- <img class="img-xs rounded-circle" src="../../assets/download.jpg" alt="Profile image" style="height: 40px !important; width: 40px !important;"> -->
+          <i class="mdi mdi-format-align-justify"></i>
+        </a>
+      </div>
+      
+      <div class="" id="navbarSupportedContent">
+      <ul class="" style="margin-top: -47px;margin-left: 190px;margin-bottom:5px">
+        
+
+        <li class="horizontal">
+          <a class="" routerLink="/allcop/dashboard" routerLinkActive="active" >
+            <i class="menu-icon mdi mdi-animation" style="font-size:15px;"></i>
+            <span class="menu-title">Dashboard</span>
+          </a>
+        </li>
+
+  
+
+    <li class="dropdown horizontal">
+      <a class="dropbtn" >
+        <i class="menu-icon mdi mdi-file-document"  style="font-size:15px;"></i>
+        <span class="menu-title">Sales Management</span>
+        <div class="dropdown-content">
+          <a class="s" routerLink="/allcop/quotationlist"  style="font-size:13px;"> <i class="menu-icon mdi mdi-file-document"  style="font-size:13px;"></i>Quotation</a>
+          <!-- <a class="" routerLink="/allcop/purchaseorderllist"  style="font-size:13px;">  <i class="menu-icon mdi mdi-forum"  style="font-size:13px;"></i>Purchase Order</a> -->
+          <a class="" routerLink  ="/allcop/delivery-challanlist"  style="font-size:13px;">  <i class="menu-icon mdi mdi-truck-delivery"  style="font-size:13px;"></i>Delivery Challan</a>
+          <a class=""routerLink="/allcop/tables" routerLinkActive="active"  style="font-size:13px;"><i class="menu-icon mdi mdi-file-document-box"  style="font-size:13px;"></i>Invoice</a>
+          <a class=""routerLink="/allcop/analysis" routerLinkActive="active"  style="font-size:13px;"><i class="menu-icon mdi mdi-buffer"  style="font-size:13px;"></i>Analysis</a>
+        </div>
+      </a>
+    </li>
+    
+   <li class="dropdown horizontal">
+      <a class="dropbtn" >
+        <i class="menu-icon mdi mdi-receipt" style="font-size:15px;"></i>
+        <span class="menu-title">Operational Management</span>
+        <div class="dropdown-content">
+          <a class="" routerLink="/allcop/list" routerLinkActive="active"  style="font-size:13px;"><i class="menu-icon mdi mdi-cash-multiple"  style="font-size:13px;"></i>Expenses</a>
+        </div>
+      </a>
+    </li>
+  <li class="dropdown horizontal">
+      <a class="dropbtn" >
+        <i class="menu-icon mdi mdi-file-document" style="font-size:15px;"></i>
+        <span class="menu-title">Members</span>
+        <div class="dropdown-content" >
+          <a class=""routerLink="/allcop/clientlist" routerLinkActive="active" style="font-size:13px;"><i class="menu-icon mdi mdi-account-multiple" style="font-size:13px;"></i>Clients</a>
+          <a class=""routerLink="/allcop/vendors" routerLinkActive="active" style="font-size:13px;"><i class="menu-icon mdi mdi-account-multiple" style="font-size:13px;"></i>Vendors</a>
+          <a class=""routerLink="/allcop/message" routerLinkActive="active" style="font-size:13px;"><i class="menu-icon mdi mdi-account-multiple"  style="font-size:13px;"></i>Message</a>
+
+        </div>
+      </a>
+    </li>
+    <!-- <li class="horizontal">
+      <a class="" routerLink="/expenses" routerLinkActive="active">
+        <i class="menu-icon mdi mdi-animation"></i>
+        <span class="menu-title">Expenses</span>
+      </a>
+    </li>
+    <li class=" horizontal">
+      <a class="" routerLink="/list" routerLinkActive="active">
+        <i class="menu-icon mdi mdi-table"></i>
+        <span class="menu-title">Expenses-List</span>
+      </a>
+    </li> -->
+    <!-- <li class=" horizontal">
+      <a class="" routerLink="/tasks" routerLinkActive="active">
+        <i class="menu-icon mdi mdi-hexagon-multiple"></i>
+        <span class="menu-title">Tasks</span>
+      </a>
+    </li> -->
+ 
+    <li class=" horizontal">
+      <a class="" routerLink="/allcop/folders" routerLinkActive="active">
+        <i class="menu-icon mdi mdi-table" style="font-size:15px;"></i>
+        <span class="menu-title">Folders</span>
+      </a>
+    </li>
+   
+    
+
+
+      </ul>
+    </div>
+      
+     
+    </div>
+    
+  </div>
+
+  
+  
+</nav>
+
+
+
+
+
+
+
+

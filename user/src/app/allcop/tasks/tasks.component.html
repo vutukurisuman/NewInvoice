@@ -1,0 +1,146 @@
+<div class="row grid-margin no-gutters" style="box-shadow: 0 0 2px #dcdce9;" >
+    <div class="col-lg-4" >
+      <div class="card" style="background-color: #e6ecfa;height: 600px;"> 
+        <ul id="menu" class="mt-3">
+            <li class="ml-2 mr-5 text-muted" style="font-size: 23px;"><i class="mdi mdi-pin text-muted"></i> </li>
+            <li class="ml-5" style="color: black;">DETAILS</li>
+            <li><a href="#"></a></li>
+          </ul>
+          <form #taskForm="ngForm" (ngSubmit)="taskForm.form.valid && sub(TaskData) ">
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <label for="">Name</label>
+                        <input type="text" id="name" name="name" placeholder="TaskName"
+                            class="form-control form_color" [(ngModel)]="TaskData.name"
+                            #name="ngModel" 
+                            [ngClass]="{'is-invalid': taskForm.submitted && name.invalid}"
+                            required />
+                        <div class="invalid-feedback" *ngIf="taskForm.submitted && name.invalid">
+                            <div *ngIf="name.errors.required"> Name is Required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>  
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <label for="">Description</label>
+                        <input type="text" id="descp" name="descp" placeholder="Description"
+                            class="form-control form_color" [(ngModel)]="TaskData.descp"
+                            #descp="ngModel" 
+                            [ngClass]="{'is-invalid': taskForm.submitted && descp.invalid}"
+                            required />
+                        <div class="invalid-feedback" *ngIf="taskForm.submitted && descp.invalid">
+                            <div *ngIf="descp.errors.required">Description is Required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>  
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <label for="exampleCheck1">Completed</label>
+                       
+                        <input type="checkbox" id="complt" name="complt"
+                        class="form-check-input form_color ml-3" [(ngModel)]="TaskData.complt"
+                        #complt="ngModel" 
+                        [ngClass]="{'is-invalid': taskForm.submitted && complt.invalid}"
+                          style="margin-top: 8px;" />
+                    </div>
+                </div>   
+            </div>  
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-2">
+               <button class="btn btn-sm" (click)="clear(TaskData)" style="background-color: #2f3e65 ;color: white;">clear</button>
+                </div>  
+                <div class="col-md-2">
+                    <button type="submit" class="btn btn-sm ml-2" style="background-color:  #2f3e65 ;color: white;">submit</button>
+               </div>   
+            </div>     
+           
+          </form>   
+      </div>
+    </div>
+
+
+
+    <div class="col-lg-8">
+        <div class="card" style="height: 600px;" >
+           <div class="row">
+            <div class="col-md-4">
+                <ul id="menu" class="mt-3">
+                    <li class="ml-2 mr-2 text-muted" style="font-size: 23px;"><i class="mdi mdi-clipboard-text text-muted"></i> </li>
+                    <li style="color: black;">Your Tasks</li>
+                    
+                  </ul>
+            </div>
+           </div>  
+
+           <div class="row mt-5" *ngIf="nodata">
+            <div class="col-md-3"></div>
+             <div class="col-md-6">
+                <figure>
+                    <figcaption class="text-center mb-2">No Task Yet.</figcaption>
+                    <img src="../../assets/images/illustration-payroll.svg" alt="image" style="width:100%">
+                  </figure>
+            </div>
+            <div class="col-md-4"></div>
+         </div> 
+         <div class="row" *ngIf="data">
+            <!-- <div class="col-md-1"></div> -->
+            <div class="col-md-10">
+                <p style="font-weight: 500;font-size: 14px;" class="ml-3"><i class="mdi mdi-chevron-right text-muted"></i>IN PROGRESS TASKS({{length}}) </p>
+                 <!-- <ul *ngFor="let data of getdata">
+                     <li>{{data.name}} <small>{{data.descp}}</small></li>
+                 </ul> -->
+                 <table class="table tabler  ml-4" style="border: none;">
+                     <tbody class="p-4">
+                         <tr *ngFor="let data of getdata">
+                             <td>
+                             <!-- <td>  <form class="form-sample" [formGroup]="profileForm"> -->
+                                <div class="form-check form-check-inline container">
+                                  <input class="form-check-input" type="checkbox"   id="inlineCheckbox1" value="option1">
+                                </div>
+                             </td>
+                             <td class="name">{{data.name}} </td>
+                             <td>{{data.descp}} </td>
+                             <!-- <td> <i style="cursor: pointer;" (click)="edit($event)" class="mdi mdi-pencil"></i></td> -->
+                             <td> <i style="cursor: pointer;" (click)="delete($event)" class="mdi mdi-delete"></i></td>                            
+                         </tr>
+                     </tbody>
+                 </table>
+            </div>
+         </div> 
+         <div class="row mt-3" *ngIf="datas">
+            <div class="col-md-10">
+                <p style="font-weight: 500;font-size: 14px;" class="ml-3"><i class="mdi mdi-chevron-right text-muted"></i>COMPLETED TASKS({{lengths}}) </p>
+                <table class="table tables  ml-4"  style="border: none;">
+                    <tbody class="p-4">
+                        <tr *ngFor="let data of completedata">
+                            <td>
+                            <!-- <td>  <form class="form-sample" [formGroup]="profileForm"> -->
+                               <div class="form-check form-check-inline container">
+                                 <input class="form-check-input" type="checkbox"   id="inlineCheckbox1" value="option1" checked>
+                               </div>
+                            </td>
+                            <td class="name">{{data.name}} </td>
+                            <td>{{data.descp}} </td>
+                            <!-- <td> <i style="cursor: pointer;"  class="mdi mdi-pencil"></i></td> -->
+                            <td> <i style="cursor: pointer;" (click)="delete($event)" class="mdi mdi-delete"></i></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+         </div> 
+        </div>
+        </div>
+      
+</div>          

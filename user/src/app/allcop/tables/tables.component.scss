@@ -1,0 +1,130 @@
+.tabicon .menu-icon {
+    font-size: 16px;
+    cursor: pointer;
+  }
+  .has-search .form-control {
+      padding-left: 2.375rem;
+      // margin-bottom: -1.3rem;
+      border-radius: -10px;
+      height: 30px;
+      font-size: 12px;
+    }
+    .has-search .form-control-feedback {
+      position: absolute;
+      z-index: 2;
+      display: block;
+      width: 2.375rem;
+      height: 2.375rem;
+      line-height: 1.9rem;
+      text-align: center;
+      pointer-events: none;
+      color: #aaa;
+    }
+
+.selects{
+    height: 33px!important;
+    font-size: 12px!important;
+    width: 101px;
+    border: 0.5px solid;
+    border-radius: 0;
+}    
+.selects.form-control{
+    padding: 0.0rem 0.2rem;
+    width: 96%;
+}
+// .form-group {
+//  margin-bottom: 0!important;
+//  padding: 0!important; 
+// }
+
+.tabs .tabs ul li a.active{
+  background-color:#2f3e65;
+}  
+.nav-link{
+  font-size: 9px!important;
+}
+.tabs ul li a.hover{
+  background-color:#2f3e65;
+}
+.nav-tabs .nav-item .nav-link {
+  font-family: "Poppins", sans-serif;
+  // line-height: 1;
+  padding:0px;
+  // font-size: 8px;
+  color: #000;
+  display: -webkit-box;
+  display: flex;
+  border-radius: 0px;
+  
+}
+
+.btn:not(:disabled):not(.disabled).active, .btn:not(:disabled):not(.disabled):active {
+  cursor: pointer;
+  background-color: #2f3e65;
+  color: white;
+  border-radius: 0px !important;
+
+}
+
+.btn:not(:disabled):not(.disabled) {
+  background-color: white;
+  color: #2f3e65;
+  border-radius: 0px !important;
+  border: 1px solid #2f3e65;
+}
+.dropdown-item{
+  font-size: 12px;
+}
+.icons i{
+  font-size: 16px;
+  cursor: pointer;
+}
+.icons{
+  font-size: 11px;
+}
+
+.f-w-5{
+  font-weight: 500;
+}
+
+.f_s_13{
+  font-size: 13px;
+}
+
+.f_s_12{
+  font-size: 12px;
+}
+
+.f_s_11{
+  font-size: 11px;
+}
+
+.newtable tbody tr td, .newtable thead tr th {
+ border: 1px solid lightgray;
+}
+
+.money{
+  font-size: 10px;
+  font-weight: 600;
+  padding-left: 11px;
+}
+
+.f_s_10{
+  font-size: 10px;
+}
+
+.innertable thead tr th, .innertable tbody tr td{
+  border: 0px !important;
+}
+
+.hai{
+  font-size: 10px;
+  font-weight: bold;
+  writing-mode: vertical-rl;
+  display: inline-block;
+  // transform: rotate(-90deg);
+}
+.some{
+  font-size: 12px;
+     text-align: center;
+}

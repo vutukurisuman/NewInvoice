@@ -1,0 +1,104 @@
+@media screen and (max-width: 1024px){
+.bottom-gradient-do_more {
+    background: rgba(0, 0, 0, 0) linear-gradient(0deg, rgb(0, 0, 0) 0%, rgba(0, 0, 0, 0.2) 100%) repeat scroll 0 0;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform: translateY(0);
+}}
+@media screen and (max-width: 1024px){
+.grid-do_more figure figcaption {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    position: absolute;
+    bottom: 30px;
+    left: 20px;
+    right: 20px;
+    height: auto;
+    max-height: none;
+    -webkit-transition: .5s ease-in-out;
+    transition: .5s ease-in-out;
+}}
+@media screen and (max-width: 992px){
+.do_more-grid-title {
+    font-size: 21px;
+    line-height: 27px;
+}}
+
+@media screen and (max-width: 1024px){
+.do_more-grid-title {
+    color: #fff;
+    font-size: 21px;
+    line-height: 30px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}}@media screen and (max-width: 992px){
+.do_more-grid-desc {
+    font-size: 20px;
+    line-height: 25px;
+}}
+.do_more-grid-desc > strong {
+    display: block;
+    margin-bottom: 10px;
+}
+@media screen and (max-width: 1024px){
+.hidden-1024 {
+    display: none;
+}}
+@media screen and (max-width: 1024px){
+.grid-do_more > .p0 > a {
+    color: #fff;
+}}
+.grid-do_more figure {
+    position: relative;
+    float: left;
+    overflow: hidden;
+    width: 100%;
+    background-color: #fff;
+    cursor: pointer;
+}
+.grid-do_more figure img {
+    position: relative;
+    display: block;
+    
+    transform: scale(1);
+  
+    transition: .5s ease-in-out;
+}
+.bottom-gradient-do_more {
+    background: rgba(0, 0, 0, 0) linear-gradient(0deg, rgb(0, 0, 0) 0%, rgba(0, 0, 0, 0.2) 23%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0) 68%, rgba(0, 0, 0, 0) 81%, rgba(0, 0, 0, 0) 92%, rgba(0, 0, 0, 0) 100%) repeat scroll 0 0;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform: translateY(100%);
+    transition: all 0.5s ease 0s;
+}
+.do_more-grid-title {
+    color: #fff;
+    font-size: 21px;
+    line-height: 30px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}.do_more-grid-desc {
+    color: #fff;
+    font-size: 20px;
+    line-height: 27px;
+    font-weight: 300;
+}.grid-do_more figure figcaption {
+    // -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    position: absolute;
+    bottom: 0px;
+    left: 20px;
+    right: 20px;
+    max-height: 40px;
+    // -webkit-transition: .5s ease-in-out;
+    transition: .5s ease-in-out;
+}
+img{    max-width: 100%;
+    height: auto;
+}
